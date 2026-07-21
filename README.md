@@ -1,3 +1,6 @@
+## notes
+this project is part of my week 1 AI engineering practise.
+
 # Week 1 — Python Basics
 
 A small project practicing core Python engineering skills: virtual environments, 
