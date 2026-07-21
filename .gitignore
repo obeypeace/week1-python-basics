@@ -11,5 +11,8 @@ __pycache__/
 # Environment variables (never commit secrets)
 .env
 
+# Data files (not tracked in git — see README for how to obtain data.csv)
+data.csv
+
 # VS Code settings (optional — some people commit this, some don't)
 .vscode/
