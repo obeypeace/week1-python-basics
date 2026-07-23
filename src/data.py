@@ -10,11 +10,23 @@ def load_data(filepath: str) -> pd.DataFrame:
     return pd.read_csv(filepath)
 
 
+def get_summary_stats(df: pd.DataFrame) -> dict:
+    """Compute summary info for a DataFrame, returning it as a dict instead of printing."""
+    return {
+        "shape": df.shape,
+        "dtypes": df.dtypes,
+        "describe": df.describe() if not df.empty else None,
+    }
+
 def summarize_data(df: pd.DataFrame) -> None:
-    """Load a CSV and print basic summary statistics."""
+    """Print basic summary statistics for a DataFrame."""
+    if df.empty:
+        logger.warning("Received an empty DataFrame — nothing to summarize.")
+        return
     logger.debug("Summarizing dataframe")
-    print(f"Shape: {df.shape}")
+    stats = get_summary_stats(df)
+    print(f"Shape: {stats['shape']}")
     print("\nColumn types:")
-    print(df.dtypes)
+    print(stats['dtypes'])
     print("\nSummary stats:")
-    print(df.describe())
+    print(stats['describe'])
