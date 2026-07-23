@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 
 def load_data(filepath: str) -> pd.DataFrame:
-    """loads a csv file into a daatframe"""
+    """Reads a CSV file and returns it as a DataFrame."""
     logger.info(f"Loading data from {filepath}")
     return pd.read_csv(filepath)
 
