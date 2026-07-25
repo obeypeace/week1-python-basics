@@ -1,6 +1,7 @@
 import pandas as pd
 import pytest
 from src.data import load_data, summarize_data, get_summary_stats
+from unittest.mock import patch
 
 @pytest.fixture
 def sample_df():
@@ -36,3 +37,9 @@ def test_summarize_data_handles_empty_dataframe(caplog):
 def test_get_summary_stats_returns_correct_shape(sample_df):
     stats = get_summary_stats(sample_df)
     assert stats["shape"] == (3,2)
+
+def test_load_data_calls_read_csv_with_correct_path():
+    """Confirms load_data calls pd.read_csv with the right filepath, without needing a real file."""
+    with patch("src.data.pd.read_csv") as mock_read_csv:
+        load_data("fake_path.csv")
+        mock_read_csv.assert_called_once_with("fake_path.csv")
