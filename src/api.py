@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import logging
 import joblib
+import pandas as pd
 from src.logger_config import setup_logging, get_logger
 
 setup_logging()
@@ -82,7 +83,7 @@ def predict(passenger: PassengerRequest):
         logger.warning(f"invalid pclass received - {passenger.pclass}")
         raise HTTPException(status_code=400, detail="pclass muct be 1, 2, or 3")
 
-    features = [[passenger.age, passenger.fare, passenger.pclass]]
+    features = pd.DataFrame([[passenger.age, passenger.fare, passenger.pclass]], columns=["Age", "Fare", "Pclass"])
     prediction = model.predict(features)[0]
     probability = model.predict_proba(features)[0][1]
 
