@@ -1,10 +1,9 @@
 import logging
 from src.data import load_data, summarize_data
+from src.logger_config import setup_logging, get_logger
 
-logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+setup_logging()
+logger = get_logger(__name__)
 
 
 def main() -> None:

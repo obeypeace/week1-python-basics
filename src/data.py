@@ -1,7 +1,7 @@
 import pandas as pd
-import logging
+from src.logger_config import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def load_data(filepath: str) -> pd.DataFrame:

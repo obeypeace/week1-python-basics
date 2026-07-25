@@ -1,12 +1,10 @@
-import logging
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import joblib
+from src.logger_config import setup_logging, get_logger
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+setup_logging()
+logger = get_logger(__name__)
 
 
 def train_model():
