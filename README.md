@@ -38,9 +38,9 @@ python -m src.main
 ## API
 
 Run the API locally:
-\`\`\`bash
+```bash
 uvicorn src.api:app --reload
-\`\`\`
+```
 
 Visit `http://127.0.0.1:8000/docs` for interactive API documentation.
 
@@ -52,7 +52,7 @@ Visit `http://127.0.0.1:8000/docs` for interactive API documentation.
 
 ## Model
 A logistic regression model is trained via:
-\`\`\`bash
+```bash
 python -m src.train
-\`\`\`
+```
 This saves `model.joblib`, which the API loads at startup.
