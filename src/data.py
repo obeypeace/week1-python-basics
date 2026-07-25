@@ -18,6 +18,7 @@ def get_summary_stats(df: pd.DataFrame) -> dict:
         "describe": df.describe() if not df.empty else None,
     }
 
+
 def summarize_data(df: pd.DataFrame) -> None:
     """Print basic summary statistics for a DataFrame."""
     if df.empty:
@@ -27,6 +28,6 @@ def summarize_data(df: pd.DataFrame) -> None:
     stats = get_summary_stats(df)
     print(f"Shape: {stats['shape']}")
     print("\nColumn types:")
-    print(stats['dtypes'])
+    print(stats["dtypes"])
     print("\nSummary stats:")
-    print(stats['describe'])
+    print(stats["describe"])
