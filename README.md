@@ -34,3 +34,25 @@ python -m src.main
 - `logging` for structured output instead of plain print statements
 - `black` for consistent code formatting
 - `ruff` for linting
+
+## API
+
+Run the API locally:
+```bash
+uvicorn src.api:app --reload
+```
+
+Visit `http://127.0.0.1:8000/docs` for interactive API documentation.
+
+### Endpoints
+- `GET /` — health check / welcome message
+- `POST /greet` — simple greeting, takes `{"name": "..."}`
+- `POST /passenger-summary` — validates and echoes passenger info
+- `POST /predict` — predicts Titanic survival given `{"age": ..., "fare": ..., "pclass": ...}`, returns prediction + probability
+
+## Model
+A logistic regression model is trained via:
+```bash
+python -m src.train
+```
+This saves `model.joblib`, which the API loads at startup.

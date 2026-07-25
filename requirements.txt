@@ -3,3 +3,8 @@ black
 ruff
 pytest
 pytest-cov
+fastapi
+uvicorn
+scikit-learn
+joblib
+httpx2
