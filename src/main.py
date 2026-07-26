@@ -1,4 +1,3 @@
-import logging
 from src.data import load_data, summarize_data
 from src.logger_config import setup_logging, get_logger
 

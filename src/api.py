@@ -75,7 +75,9 @@ logger.info("model loaded successfully")
 
 @app.post("/predict")
 def predict(passenger: PassengerRequest):
-    logger.info(f"Prediction requested: age={passenger.age}, fare={passenger.fare}, pclass={passenger.pclass}")
+    logger.info(
+        f"Prediction requested: age={passenger.age}, fare={passenger.fare}, pclass={passenger.pclass}"
+    )
 
     if passenger.pclass not in [1, 2, 3]:
         logger.warning(f"Invalid pclass received: {passenger.pclass}")
@@ -91,14 +93,14 @@ def predict(passenger: PassengerRequest):
 
     features = pd.DataFrame(
         [[passenger.age, passenger.fare, passenger.pclass]],
-        columns=["Age", "Fare", "Pclass"]
+        columns=["Age", "Fare", "Pclass"],
     )
     prediction = model.predict(features)[0]
     probability = model.predict_proba(features)[0][1]
 
     return {
         "survived_prediction": int(prediction),
-        "survival_probability": round(float(probability), 3)
+        "survival_probability": round(float(probability), 3),
     }
 
 
